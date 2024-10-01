@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+Psicosfera | Cuestionario de Registro
+{% endblock %}
+
+{% block btns %}
+
+{% endblock %}
+
+{% load bootstrap4 %}
+
+{% block links %}
+<!-- Font-->
+<link href="{% static 'css/montserrat-font.css' %}" rel="stylesheet">
+<link href="{% static 'css/material-design-iconic-font.min.css' %}" rel="stylesheet">
+
+<!-- Main Style Css -->
+<link href="{% static 'css/style2.css' %}" rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+{% endblock links %}
+
+{% block contenido %}
+<section class="bg-gradient-primary">
+    <div class="page-content">
+        <div class="wizard-v10-content">
+            <div class="wizard-form">
+                <div class="wizard-header">
+                    <h3>Datos del Consultorio</h3>
+                </div>
+                <form class="form-register" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div id="form-total">
+                        <!-- SECTION 1 -->
+                        <h2>1</h2>
+                        <section class="trasparente">
+                            <div class="inner">
+                                <div class="form-row">
+                                    <div class="hidden">
+                                        {{ form.psicologo }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-holder form-holder-2">
+                                        <label for="{{ form.direccion.id_for_label }}">Dirección del Consultorio:</label>
+                                        <input type="text" class="form-control" id="{{ form.direccion.id_for_label }}" name="{{ form.direccion.name }}">
+                                        <div id="autocomplete-results-location" class="autocomplete-results-form"></div>
+                                        {% for error in form.direccion.errors %}
+                                            <span class="error-message">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="form-row form-center">
+                                    <div class="form-holder form-holder-2 form_hora">
+                                        <div class="hora-container">
+                                            <label for="{{ form.horario_apertura.id_for_label }}">Apertura:</label>
+                                            <input type="time" class="form-control" id="{{ form.horario_apertura.id_for_label }}" name="{{ form.horario_apertura.name }}">
+                                            {% for error in form.horario_apertura.errors %}
+                                                <span class="error-message">{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="hora-container">
+                                            <label for="{{ form.horario_cierre.id_for_label }}">Cierre:</label>
+                                            <input type="time" class="form-control" id="{{ form.horario_cierre.id_for_label }}" name="{{ form.horario_cierre.name }}">
+                                            {% for error in form.horario_cierre.errors %}
+                                                <span class="error-message">{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-holder form-holder-2">
+                                        <label for="{{ form.costo_consulta.id_for_label }}">Costo General de la Consulta:</label>
+                                        <input type="text" class="form-control" id="{{ form.costo_consulta.id_for_label }}" name="{{ form.costo_consulta.name }}">
+                                        {% for error in form.costo_consulta.errors %}
+                                            <span class="error-message">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+¿{% block scripts %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/jquery.steps.js' %}"></script>
+<script src="{% static 'js/main2.js' %}"></script>
+<script src="{% static 'js/busqueda-autocompletado.js' %}" ></script>
+<script src="{% static 'js/foto_perfil_registro.js' %}"></script>
+<script src="{% static 'js/CalcularEdad.js' %}"></script>
+<script>
+    const calcularEdadUrl = "{% url 'calcular_edad' %}";
+</script>
+{% endblock %}

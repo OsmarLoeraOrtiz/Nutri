@@ -1,0 +1,70 @@
+{% extends 'baseLogin.html' %}
+
+{% load static %}
+    
+{% block titulo %}
+    Psicosfera | Iniciar Sesión
+{% endblock %}
+
+{% block tituloLogin %}
+    Iniciar Sesion
+{% endblock %}
+
+{% block btns %}
+     
+{% endblock %}
+
+{% block contenido %}
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">¡Bienvenido de vuelta!</h1>
+</div>
+<form class="user" method = "post" action="">
+    <div class="form-group">
+    {% csrf_token %}
+    <div class="form-group" id="login-username">
+        {{form.username}}
+    </div>
+    <div class="form-group">
+        {{form.password}}
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                {% if 'login_error' in message.tags %}
+                    <li class="{{ message.tags }}">{{ message }}</li> <!--Solo se muestran los errores de el login-->
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+    <div class="form-group">
+        <div class="custom-control custom-checkbox small">
+            <input type="checkbox" class="custom-control-input" id="customCheck">
+            <label class="custom-control-label" for="customCheck">Recuérdame</label> <!--Solo es estetico-->
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-user btn-block">Iniciar Sesión</button>
+    <hr>
+    <a href="{% url 'home' %}" class="btn btn-google btn-user btn-block">
+        <i class="fab fa-google fa-fw"></i> Iniciar Sesión con Google
+    </a>
+    <a href="{% url 'home' %}" class="btn btn-facebook btn-user btn-block">
+        <i class="fab fa-facebook-f fa-fw"></i> Iniciar Sesión con Facebook
+    </a>
+</form>
+<hr>
+<div class="text-center">
+    <a class="small" href="{% url 'reestablecer_contra' %}">¿Olvidaste tu contraseña?</a>
+</div>
+<div class="text-center">
+    <a class="small" href="{% url 'registro' %}">Crea una cuenta</a>
+</div>
+{% endblock %}
+
+    

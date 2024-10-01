@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Psicosfera | Psicologo
+{% endblock %}
+
+
+{% block btns %}
+<li><a href="{% url 'interfaz' %}#directorio" >Directorio</a></li>
+<li><a href="{% url 'interfaz' %}#agenda" >Agenda</a></li>
+<li><a href="{% url 'interfaz' %}#diario" >Diario</a></li>
+{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/backend-plugin.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/backend.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/line-awesome.min.css' %}">
+{% endblock links %}
+
+{% block contenido %}
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- Backend Bundle JavaScript -->
+    <script src="{% static 'js/backend-bundle.min.js' %}" ></script>
+    <script src="{% static 'js/flex-tree.min.js' %}" ></script>
+    <script src="{% static 'js/tree.js' %}" ></script>
+    <script src="{% static 'js/table-treeview.js' %}" ></script>
+    <script src="{% static 'js/sweetalert.js' %}" ></script>
+    <script src="{% static 'js/chart-custom.js' %}" ></script>
+    <script src="{% static 'js/slider.js' %}" ></script>
+    <script src="{% static 'js/app.js' %}" ></script>
+{% endblock %}

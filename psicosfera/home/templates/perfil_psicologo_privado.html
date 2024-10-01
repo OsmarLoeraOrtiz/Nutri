@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Psicosfera | Mi Perfil
+{% endblock %}
+
+{% block btns %}
+<li><a href="{% url 'perfil' %}#perfil">Detalles de la Cuenta</a></li>
+<li><a href="{% url 'perfil' %}#consult">Consultorio</a></li>
+<li><a href="{% url 'perfil' %}#contact">Contactos</a></li>
+{% endblock %}
+
+{% block links %}
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'lightbox/css/lightbox.css' %}" rel="stylesheet">
+{% endblock links %}
+
+{% block contenido %}
+<section class="section profile">
+  <div class="row">
+    <div class="col-xl-4 ">
+
+      <div class="card  mt-5 seccion_foto_fija">
+        <div class="card-body pt-4 d-flex flex-column align-items-center">
+          <img id="foto" src="" alt="Profile" class="fotoPerfil">
+          <br>
+          <h2 id="user"></h2>
+          <h3 id="especialidad2"></h3>
+          <h6 class="titulo_perfil">Sobre Mí</h6>
+          <p class="small fst-italic" id="descripcion"></p>
+          <div class="social-links mt-2">
+            <a href="#" id="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" id="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" id="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" id="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+    <div class="col-xl-8">
+
+      <div class="card mt-5">
+        <div class="card-body pt-3">
+          <!-- Bordered Tabs -->
+          <ul class="nav nav-tabs nav-tabs-bordered">
+
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Descripción</button>
+            </li>
+
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar Perfil</button>
+            </li>
+
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Ajustes</button>
+            </li>
+
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Cambiar contraseña</button>
+            </li>
+
+          </ul>
+
+          <!-- Detalles del perfil -->
+          <div class="tab-content pt-2">
+
+            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+
+              <h4 class="titulo_perfil" id="perfil">Detalles de la Cuenta</h4>
+              <br>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Nombre completo</div>
+                <p class="col-lg-9 col-md-8" id="nombre"></p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Edad</div>
+                <p class="col-lg-9 col-md-8" id="edad"></p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Ubicación</div>
+                <p class="col-lg-9 col-md-8" id="ubicacion"></p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Número de telefono</div>
+                <p class="col-lg-9 col-md-8" id="numero"></p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Correo electronico</div>
+                <p class="col-lg-9 col-md-8" id="correo"></p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Especialidad</div>
+                <p class="col-lg-9 col-md-8" id="especialidad"></p>
+              </div>
+
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Institución de Otorgamiento</div>
+                <p class="col-lg-9 col-md-8" id="institucion"></p>
+              </div>
+ 
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Cédula Profesional</div>
+                <p class="col-lg-9 col-md-8" id="cedula1"></p>
+              </div>
+
+              <h6 class="titulo_perfil">Certificado Académico</h6>
+              <div class="row">
+                <embed id="certificado" src="" type="application/pdf" class="embed-pdf"/>
+              </div>
+              <br>
+              <h6 class="titulo_perfil">Curriculum Profesional</h6>
+              <div class="row">
+                <embed id="curriculum" src="" type="application/pdf" class="embed-pdf"/>
+              </div>
+              <br>
+
+              <h5 class="titulo_perfil" id="consult">Detalles del Consultorio</h5>
+              <br>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Dirección del Consultorio</div>
+                <p class="col-lg-9 col-md-8" id="direccion"></p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Horario de atención</div>
+                <p class="col-lg-9 col-md-8" id="horario"></p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Costo General de la Consulta</div>
+                <p class="col-lg-9 col-md-8" id="costo_consulta"></p>
+              </div>
+
+              <div class="row">
+                <div class="contenedor-mapa-perfil" id="map1"></div>
+              </div>
+              <br>
+
+              <div>
+                <h5 class="titulo_perfil" id="contact">Contactos</h5>
+                <br>
+
+                <div class="row">
+                  <p class="text-center" id="contactosPsico"></p>
+                </div>
+                
+              </div>
+
+            </div>
+<!-- Actualizar perfil -->
+            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+              <div>
+                <h5 class="titulo_perfil">Datos Personales</h5>
+                <form method="post" enctype="multipart/form-data" action="{% url 'actualizar_psicologo' %}">
+                  {% csrf_token %}
+                  <p>
+                    <label for="firstName" class="col-md-4 col-lg-3 col-form-label">Nombre/s:</label>
+                    <input name="firstName" type="text" class="form-control" id="firstName">
+                  </p>
+  
+                  <p>
+                    <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Apellidos:</label>
+                    <input name="lastName" type="text" class="form-control" id="lastName">
+                  </p>
+
+                  <p>
+                    <label for="correo2" class="col-md-4 col-lg-3 col-form-label">Correo electrónico:</label>
+                    <input name="correo2" type="text" class="form-control" id="correo2">
+                  </p>
+                    {{ formPsicologo.as_p }}
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                  </div>
+                </form>
+            </div>
+            <br>
+            <div>
+              <h5 class="titulo_perfil">Datos del Consultorio</h5>
+              <form method="post" enctype="multipart/form-data" action="{% url 'actualizar_consultorio' %}">
+                  {% csrf_token %}
+                  {{ formConsultorio.as_p }}
+                  
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                  </div>
+              </form>
+
+            </div>
+              
+
+            </div>
+
+            <div class="tab-pane fade pt-3" id="profile-settings">
+
+              <!-- Settings Form -->
+              {% if not usuario.correo_verificado %}
+              <div class="text-center">
+                <div class="row mb-3">
+                  <label class="col-md-4 col-lg-3 col-form-label">Debes confirmar tu correo para acceder a esta función.</label>
+                  <div class="col-md-8 col-lg-9">
+                    <a href="{% url 'enviar_correo_confirmacion' %}" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: #ffffff; text-decoration: none; border-radius: 5px;">Confirmar Correo</a>
+                  </div>
+                </div>
+              </div>
+              
+              {% else %}
+              <form method="post" enctype="multipart/form-data" action="{% url 'ajuste_notificaciones' %}">
+                {% csrf_token %}
+                
+                <div class="row mb-3">
+                    <label class="col-md-4 col-lg-3 col-form-label">Notificaciones de Correo electrónico</label>
+                    <div class="col-md-8 col-lg-9">
+                        <div class="form-check">
+                          {% if ajuste_notificaciones.cambios  %}
+                            <input class="form-check-input" type="checkbox" id="cambios" name="cambios" checked>
+                          {% else %}
+                            <input class="form-check-input" type="checkbox" id="cambios" name="cambios">
+                          {% endif %}
+                            <label class="form-check-label" for="cambios">
+                                Cambios realizados en su cuenta
+                            </label>
+                        </div>
+                        <div class="form-check">
+                        {% if ajuste_notificaciones.servicios  %}
+                          <input class="form-check-input" type="checkbox" id="servicios" name="servicios" checked>
+                        {% else %}
+                          <input class="form-check-input" type="checkbox" id="servicios" name="servicios">
+                        {% endif %}
+                            <label class="form-check-label" for="servicios">
+                                Información sobre nuevos productos y servicios.
+                            </label>
+                        </div>
+                        <div class="form-check">
+                          {% if ajuste_notificaciones.promociones  %}
+                            <input class="form-check-input" type="checkbox" id="promociones" name="promociones" checked>
+                          {% else %}
+                            <input class="form-check-input" type="checkbox" id="promociones" name="promociones">
+                          {% endif %}
+                            <label class="form-check-label" for="promociones">
+                                Ofertas promocionales y de marketing
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="securityNotify" name="securityNotify" checked disabled>
+                            <label class="form-check-label" for="securityNotify">
+                                Alertas de seguridad
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </form>
+              {% endif %}
+
+            </div>
+
+            <div class="tab-pane fade pt-3" id="profile-change-password">
+              <!-- Change Password Form -->
+
+              <form method="post" action="{% url 'actualizar_password' %}">
+                {% csrf_token %}
+
+                <div class="row mb-3">
+                  <label for="password_actual" class="col-md-4 col-lg-3 col-form-label">Contraseña actual</label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="password_actual" type="password" class="form-control" id="password_actual">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="nueva_password" class="col-md-4 col-lg-3 col-form-label">Nueva Contraseña</label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="nueva_password" type="password" class="form-control" id="nueva_password">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="confirmar_password" class="col-md-4 col-lg-3 col-form-label">Repita la Nueva Contraseña</label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="confirmar_password" type="password" class="form-control" id="confirmar_password">
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+                </div>
+              </form><!-- End Change Password Form -->
+
+            </div>
+
+          </div><!-- End Bordered Tabs -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
+ 
+{% block scripts %}
+  <link href="{% static 'lightbox/js/lightbox.js' %}" rel="stylesheet">
+  <script src="{% static 'js/datosPerfil.js' %}"></script>
+  <script src="{% static 'js/googleMapsAPI.js' %}" ></script>
+  <script src="{% static 'js/mostrarMapa.js' %}" ></script>
+
+  <script>
+    // Espera a que la página se cargue completamente
+    document.addEventListener("DOMContentLoaded", function () {
+      // Llama a mostrarMapa con la dirección del usuario
+      console.log( "direccion: " + "{{usuario.direccion}}")
+      mostrarMapa("{{usuario.direccion}}");
+    });
+  </script>
+
+{% endblock %}
