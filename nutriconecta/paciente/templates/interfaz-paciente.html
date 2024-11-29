@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    NutriConecta | Actividad
+{% endblock %}
+
+{% block contenido %}
+<section>
+  
+    <div class="titulo-search">
+      <h2>Encuentra a quien necesitas</h2>
+    </div>
+    
+    <div id="search-form" class="row align-items-end">
+
+      <div class="col-md-3">
+          <label>¿Qué necesitas?</label>
+          <input type="text" placeholder="Especialidad médica, especialista" id="specialty-input" class="form-control" list="autocomplete-results">
+          <div id="autocomplete-results-specialty" class="autocomplete-results-interfaz"></div>
+      </div>
+
+      <div class="col-md-3">
+          <label>¿En dónde?</label>
+              <input type="text" placeholder="Ubicación" id="location-input" class="form-control" list="autocomplete-results">
+              <div id="autocomplete-results-location" class="autocomplete-results-interfaz"></div>
+          
+      </div>
+      <div class="col-md-2">
+          <div class="d-grid">
+              <button class="btn btn-primary btn-search" onclick="mostrar_contenido()">Buscar</button>
+          </div>
+      </div>
+  </div>
+
+    
+
+      
+    <div class="contenedor-mapa-contenido">
+        <div class="contenedor-mapa">
+          <div class="divisor-2 mapa">
+            <div id="map" class="divisor-2"></div>
+          </div>
+          <div class="divisor-2" id="zona-especialista">
+  
+          </div>
+        </div>
+    </div>
+    
+  <div class="titulo-terapia">
+    <h4>¿Eres un profesional y buscas ser parte de la comunidad de NutriConecta?</h4>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="col-md-2">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
+            <a class="btn btn-primary" href="{% url 'registro' %}">¡ÚNETE AHORA!</a>
+        </div>
+    </div>
+</div>
+
+</section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/googleMapsAPI.js' %}" ></script>
+  <script src="{% static 'js/ConsultarMapa.js' %}" ></script>
+  <script src="{% static 'js/ConsultarNutriologo.js' %}" ></script>
+  <script src="{% static 'js/seleccionarOpcion.js' %}" ></script>
+  <script src="{% static 'js/expandirPagina.js' %}" ></script>
+  <script src="{% static 'js/busqueda-autocompletado.js' %}" ></script>
+{% endblock %}

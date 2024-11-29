@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+NutriConecta | Contacta a un profesional
+{% endblock %}
+ 
+
+{% block btns %}
+<li><a href="{% url 'home' %}#mision">Compartiendo una misión de Bienestar</a></li>
+<li><a href="{% url 'home' %}#trayectoria">Tu Trayectoria en NutriConecta</a></li>
+<li><a href="{% url 'home' %}#porque">¿Por qué usar nutriConecta?</a></li>
+<li><a href="{% url 'home' %}#P&R">P&R</a></li>
+<li><a href="{% url 'home' %}#footer">Contacto</a></li>
+<li><a href="{% url 'interfaz' %}">Mi consultorio</a></li>
+<!--
+  <li class="dropdown has-dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down"></i></a>
+    <ul class="dd-box-shadow">
+      <li><a href="#">Dropdown 1</a></li>
+      <li class="dropdown has-dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down"></i></a>
+        <ul class="dd-box-shadow">
+          <li><a href="#">Deep Dropdown 1</a></li>
+          <li><a href="#">Deep Dropdown 2</a></li>
+          <li><a href="#">Deep Dropdown 3</a></li>
+          <li><a href="#">Deep Dropdown 4</a></li>
+          <li><a href="#">Deep Dropdown 5</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Dropdown 2</a></li>
+      <li><a href="#">Dropdown 3</a></li>
+      <li><a href="#">Dropdown 4</a></li>
+    </ul>
+  </li>
+-->
+{% endblock %}
+
+
+{% block contenido %}
+<!-- Hero Section - Home Page -->
+<section id="hero" class="hero">
+
+  <img src="{% static 'img/bienvenida.jpg' %}" alt="" data-aos="fade-in">
+
+  <div class="container">
+      <div>
+        <h2 data-aos="fade-up" data-aos-delay="100">¡Bienvenido a NutriConecta para nutriólogos! </h2>
+        <p data-aos="fade-up" data-aos-delay="200">Tu salud fisica, nuestro compromiso total.</p>
+      </div>
+    
+      <div class="section-nutriconecta">
+        <p data-aos="fade-up" data-aos-delay="200" ><em>Descubre Tu Oportunidad de Hacer una Diferencia: Únete a Nuestro Equipo en NutriConecta. <br>
+            En NutriConecta, creemos que cada individuo merece acceso a un apoyo de calidad. Si eres un nutriólogo comprometido con la 
+            transformación positiva de vidas, te damos la bienvenida a explorar cómo puedes formar parte de nuestra familia en NutriConecta y llevar
+             tu pasión por la terapia a un nivel nacional.
+            
+          </em>
+        </p>
+        </div>
+
+        <div class=" d-flex justify-content-center align-items-center" >
+          <form action="#" class="sign-up-form" data-aos="fade-up" data-aos-delay="300">
+            <input type="submit" class="btn btn-success btn-home" value="Ir a mi consultorio" formaction="{% url 'interfaz' %}">
+          </form>
+        </div>
+  </div>
+
+</section><!-- End Hero Section -->
+
+<!--  Section - Home Page -->
+<section id="mision" class="features">
+
+  <!--  Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Compartiendo una misión de Bienestar</h2>
+  </div><!-- End Section Title -->
+
+  <div class="container section-content" data-aos="fade-up">
+    <p>
+        En NutriConecta, nuestra misión es proporcionar un espacio en línea 
+        donde las personas puedan encontrar la ayuda que necesitan para vivir 
+        vidas más saludables y equilibradas. Si compartes nuestra creencia en el 
+        poder de la terapia para cambiar vidas, te invitamos a unirte a nosotros 
+        en este viaje hacia el bienestar fisico. 
+    </p>
+  </div>
+  <div class="container">
+
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-lg-5 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+        <h3>Misión</h3>
+        <p>
+          Transformar vidas a través de conexiones significativas. 
+          En NutriConecta, nos dedicamos a crear puentes entre profesionales 
+          de la salud fisica y aquellos que buscan guía y apoyo.
+        </p>
+      </div>
+      <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+        <div class="image-stack">
+          <img src="{% static 'img/features-light-1.jpg' %}" alt="" class="stack-front">
+          <img src="{% static 'img/features-light-2.jpg' %}" alt="" class="stack-back">
+        </div>
+      </div>
+    </div><!-- Features Item -->
+
+    <hr class="border">
+
+    <div class="row gy-4 align-items-stretch justify-content-between features-item ">
+      <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
+        <img src="{% static 'img/features-light-3.jpg' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
+        <h3>Visión</h3>
+        <p>
+          Ser la plataforma líder en México para la atención nutriológica en línea, 
+          reconocida por su compromiso con la calidad, la integridad y 
+          el bienestar de cada individuo. Imaginamos un mundo donde el acceso a la 
+          salud fisica esté al alcance de todos, sin barreras."
+        </p>
+      </div>
+    </div><!-- Features Item -->
+
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-lg-5 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+        <h3>Valores</h3>
+        <ul>
+          <li><i class="bi bi-check"></i> <span><b>Empatía: </b>Nos ponemos en el lugar del otro, ya sea paciente o nutriólogo, para entender sus necesidades y brindar soluciones adecuadas.</span></li>
+          <li><i class="bi bi-check"></i> <span><b>Integridad: </b>Nos comprometemos con la veracidad y precisión de la información, y con el respeto a la privacidad y seguridad de nuestros usuarios.</span></li>
+          <li><i class="bi bi-check"></i> <span><b>Innovación: </b>Buscamos constantemente mejorar y adaptarnos a las nuevas tecnologías para ofrecer una experiencia de usuario inigualable.</span></li>
+          <li><i class="bi bi-check"></i> <span><b>Responsabilidad: </b>Entendemos la importancia de la salud fisica y trabajamos con diligencia para asegurar que cada interacción en nuestra plataforma sea beneficiosa.</span></li>
+          <li><i class="bi bi-check"></i> <span><b>Comunidad: </b>Creemos en el poder de la conexión y en la construcción de una comunidad donde todos se sientan apoyados y comprendidos.</span></li>
+          <li><i class="bi bi-check"></i> <span><b>Compromiso: </b>Con la calidad del servicio y con cada individuo que nos elige.</span></li>
+          <li><i class="bi bi-check"></i> <span><b>Confianza: </b>Garantizar un espacio seguro y respetuoso para todos.</span></li>
+          <li><i class="bi bi-check"></i> <span><b>Calidad: </b>Mantener altos estándares en cada interacción.</span></li>
+          <li><i class="bi bi-check"></i> <span><b>Solidaridad: </b>Entender que cada historia cuenta y cada individuo importa.</span></li>
+        </ul>
+      </div>
+      <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+        <div class="image-stack">
+          <img src="{% static 'img/features-light-1.jpg' %}" alt="" class="stack-front">
+          <img src="{% static 'img/features-light-2.jpg' %}" alt="" class="stack-back">
+        </div>
+      </div>
+    </div><!-- Features Item -->
+
+  </div>
+
+</section><!-- End Features Section -->
+
+<!--  Section - Home Page -->
+
+<section id="trayectoria" class="features">
+
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Tu Trayectoria en NutriConecta: Empatía, Crecimiento y Apoyo</h2>
+    </div>
+  
+    <div class="container section-content" data-aos="fade-up">
+      <p>Si decides unirte a NutriConecta, encontrarás un entorno que valora tu empatía y compromiso. 
+        No solo estarás brindando terapia en línea; estarás siendo parte de una comunidad que te respalda 
+        en tu crecimiento profesional. Te proporcionamos la flexibilidad para establecer tu horario y la 
+        plataforma para conectar con personas que necesitan tu ayuda.
+    </p>
+    </div>
+  </section><!-- End Features Section -->
+
+<section id="porque" class="features">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>¿Por qué usar NutriConecta?</h2>
+  </div>
+
+  <div class="container section-content" data-aos="fade-up">
+    <p><strong>Expande tu Alcance:</strong> Conecta con pacientes de diferentes áreas y amplía tu práctica.</p>
+    <p><strong>Acceso Instantáneo a Expedientes:</strong> Refresca tu memoria antes de cada cita accediendo fácilmente a los diagnósticos y detalles de tus pacientes, optimizando así la calidad de la consulta.</p>
+    <p><strong>Plataforma Adaptable:</strong> Ofrecemos niveles de servicio desde básicos hasta premium para cada etapa de tu carrera.</p>
+    <p><strong>Gestión Eficiente:</strong> Maneja tu calendario, citas y comunicación con pacientes en un solo lugar.</p>
+    <p><strong>Seguridad Garantizada:</strong> Protegemos la información de tus pacientes y la tuya con los más altos estándares.</p>
+    <p><strong>Forma parte de una Comunidad:</strong> Interactúa y establece conexiones con otros profesionales de salud fisica.</p>
+    <p><strong>Pagos Rápidos y Seguros:</strong> Procesamiento confiable de transacciones en línea.</p>
+  </div>
+</section><!-- End Features Section -->
+
+<!--  Section - Home Page -->
+<section id="P&R" class="features">
+
+  <!--  Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Preguntas y Respuestas</h2>
+  </div><!-- End Section Title -->
+
+  <div class="container section-content" data-aos="fade-up">
+    <p><strong>¿Qué es NutriConecta?</strong><br>
+      NutriConecta es más que una simple plataforma de terapia en línea; es un espacio seguro y confidencial creado con la misión de priorizar su bienestar. Aquí, usted puede conectarse con nutriólogos altamente capacitados y experimentados sin importar su ubicación.</p>
+    
+      <p><strong>¿Quién estará al tanto de mi salud fisica?</strong><br>
+      En NutriConecta, le conectaremos con un nutriólogo especializado y altamente capacitado que estará dedicado a entender y atender sus necesidades nutrimentales y fisicas. Puede estar seguro de que estará en manos de un experto comprometido en brindarle el apoyo y las herramientas necesarias para su bienestar.</p>
+    
+      <p><strong>¿Cuánto cuesta una sesión?</strong><br>
+      La transparencia es uno de nuestros pilares en NutriConecta. Cada nutriólogo en nuestra plataforma tiene un costo fijo por sesión, que usted podrá ver y comparar durante su proceso de selección. Así, puede elegir el terapeuta que mejor se adapte a sus necesidades y presupuesto.</p>
+    
+      <p><strong>¿Cómo será mi proceso?</strong><br>
+      Empezar en NutriConecta es sencillo y cómodo. Solo necesita registrarse en nuestra página web y explorar nuestro catálogo de nutriólogos calificados. Una vez seleccionado su nutriólogo, podrá agendar citas con flexibilidad y acceder a todas nuestras herramientas y recursos, incluida la posibilidad de mantener contacto constante con su terapeuta.</p>
+    
+      <p><strong>¿Cómo están certificados los nutriólogos?</strong><br>
+      La calidad y la confianza son fundamentales en NutriConecta. Todos los nutriólogos en nuestra plataforma están cuidadosamente certificados y cumplen con los más altos estándares éticos y legales. Usted puede confiar en que estará en manos de profesionales altamente calificados y comprometidos con su bienestar.</p>
+    
+      <p><strong>¿Cómo puedo elegir a mi nutriólogo?</strong><br>
+      El proceso de selección de nutriólogos en NutriConecta es intuitivo y centrado en su comodidad. Tras registrarse, tendrá acceso a un catálogo completo de profesionales altamente calificados, incluyendo detalles como valoraciones y experiencia, para que pueda tomar una decisión informada.</p>
+    
+      <p><strong>¿Existe la posibilidad de tomar terapia presencial?</strong><br>
+      Sí, en NutriConecta ofrecemos la flexibilidad de elegir entre terapia en línea o presencial. Al agendar su cita, podrá seleccionar la opción que más le convenga, incluso optar por terapeutas cercanos a su localidad para terapia cara a cara.</p>
+    
+      <p><strong>¿Cómo funcionan las notas compartidas y personales?</strong><br>
+      En NutriConecta, ofrecemos herramientas como notas personales y compartidas para enriquecer su experiencia terapéutica. Las notas personales le ofrecen un espacio para reflexionar sobre su proceso, mientras que las notas compartidas facilitan una comunicación efectiva con su nutriólogo.</p>
+    
+      <p><strong>¿Cómo es el contacto entre el paciente y el nutriólogo?</strong><br>
+      Mantenemos múltiples canales de comunicación para asegurar una experiencia fluida y efectiva entre usted y su nutriólogo. Esto incluye un chat en vivo, opción de llamadas telefónicas y notas compartidas, permitiéndole mantener un contacto constante con su terapeuta.</p>
+    
+      <p><strong>¿Cuánto tiempo puedo usar NutriConecta?</strong><br>
+        NutriConecta es una plataforma en línea diseñada para adaptarse a sus necesidades a lo largo del tiempo. No hay un límite específico en cuanto a la duración del uso; usted puede utilizar la plataforma siempre que lo necesite.</p>
+    
+      <p><strong>¿Puedo tener una retroalimentación de mis antiguas sesiones?</strong><br>
+      Sí, en NutriConecta, los usuarios tienen la capacidad de acceder a sus perfiles personales para administrar sus citas y revisar el historial de sesiones anteriores. Esto le permite recibir retroalimentación y hacer un seguimiento de su progreso a lo largo del tiempo.</p>
+    
+      <p><strong>¿Cómo está protegida mi información personal y mi diagnóstico nutriológico?</strong><br>
+      La seguridad y la privacidad de su información son de suma importancia para nosotros. NutriConecta garantiza la seguridad y privacidad de la información personal y médica de todos los usuarios y nutriólogos. Implementamos medidas de seguridad de alto nivel para garantizar la protección de sus datos.</p>
+
+      <p><strong>¿Puedo ingresar a NutriConecta de forma anónima?</strong><br>
+      Sí, se podrá acceder a NutriConecta de forma anónima para tener una sesión, pero sin seguimiento.</p>
+    
+      <p><strong>¿Cómo es la forma de pago?</strong><br>
+        NutriConecta ofrece diversas formas de pago para su conveniencia. Los detalles específicos sobre las opciones de pago estarán disponibles en la plataforma.</p>
+    
+      <p><strong>¿Existe la opción de pagar en efectivo?</strong><br>
+      Sí, se podrá pagar en efectivo haciendo la reserva en línea.</p>
+    
+      <p><strong>Soy un nutriólogo, ¿Cómo puedo empezar con NutriConecta?</strong><br>
+      Si es un profesional en nutriología y está interesado en unirse a NutriConecta, la plataforma ofrece diferentes niveles de servicio, desde básicos hasta premium, adaptados a cada etapa de su carrera. El proceso de registro y otros detalles se encuentran en la plataforma.</p>
+    </div>
+  </div>
+</section><!-- End Features Section -->
+{% endblock %}
+
+{% block scripts %}
+{% endblock scripts %}

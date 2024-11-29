@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+NutriConecta | Cuestionario de Registro
+{% endblock %}
+
+{% block btns %}
+
+{% endblock %}
+
+{% load bootstrap4 %}
+
+{% block links %}
+     <!-- Font-->
+     <link href="{% static 'css/montserrat-font.css' %}" rel="stylesheet">
+     <link href="{% static 'css/material-design-iconic-font.min.css' %}" rel="stylesheet">
+ 
+     <!-- Main Style Css -->
+     <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+     <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+{% endblock links %}
+   
+{% block contenido %}
+<section class="bg-gradient-primary">
+    <div class="wizard-v10-content">
+        <div class="wizard-form">
+            <div class="wizard-header">
+                <h3>Datos del Paciente</h3>
+            </div>
+            <form class="form-register" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div id="form-total">
+                    <!-- SECTION 1 -->
+                    <h2>1</h2>
+                    <section class="trasparente">
+                        <div class="inner">
+                            <div class="form-row">
+                                <div class="hidden">
+                                    {{ form.user }}
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-holder form-holder-2">
+                                    <img id="preview" src="{% static 'img/usuario.png' %}" alt="Vista previa de la imagen" class="foto_perfil">
+                                    {% if error_message %}
+                                    <div class="error-message">{{ error_message }}</div>
+                                    {% endif %}
+                                    <label for="id_foto_perfil">Foto de Perfil:</label>
+                                    <input type="file" class="form-control" id="id_foto_perfil" name="foto_perfil" onchange="previewImage(event)">
+                                    {% for error in form.foto_perfil.errors %}
+                                        <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder form-holder-2">
+                                    <label for="{{ form.descripcion.id_for_label }}">Descripción de mi:</label>
+                                    <textarea class="form-control descripcion_input" id="{{ form.descripcion.id_for_label }}" name="{{ form.descripcion.name }}"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder form-holder-2">
+                                    <label for="{{ form.fecha_nacimiento.id_for_label }}">Fecha de Nacimiento:</label>
+                                    <input type="date" class="form-control" id="id_fecha_nacimiento" name="{{ form.fecha_nacimiento.name }}">
+                                    {% for error in form.fecha_nacimiento.errors %}
+                                        <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder form-holder-2">
+                                    <label for="id_edad">Edad:</label>
+                                    <input type="text" class="form-control" id="id_edad" name="{{ form.edad.name }}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder form-holder-2">
+                                    <label for="{{ form.direccion.id_for_label }}">Genero:</label>
+                                    {{ form.sexo }}
+                                    {% for error in form.sexo.errors %}
+                                        <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- SECTION 2 -->
+                    <h2>2</h2>
+                    <section class="trasparente">
+                        <div class="inner">
+                            <div class="form-row">
+                                <div class="form-holder form-holder-2">
+                                    <label for="{{ form.ubicacion.id_for_label }}">Ubicación:</label>
+                                    <input type="text" class="form-control" id="{{ form.ubicacion.id_for_label }}" name="{{ form.ubicacion.name }}">
+                                    {% for error in form.ubicacion.errors %}
+                                        <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder form-holder-2">
+                                    <label for="{{ form.ocupacion.id_for_label }}">Ocupación:</label>
+                                    <input type="text" class="form-control" id="{{ form.ocupacion.id_for_label }}" name="{{ form.ocupacion.name }}">
+                                    {% for error in form.ocupacion.errors %}
+                                        <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder form-holder-2">
+                                    <label for="{{ form.telefono.id_for_label }}">Teléfono:</label>
+                                    <input type="tel" class="form-control" id="{{ form.telefono.id_for_label }}" name="{{ form.telefono.name }}" pattern="[0-9]{10,15}">
+                                    {% for error in form.telefono.errors %}
+                                        <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+¿{% block scripts %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.steps.js' %}"></script>
+    <script src="{% static 'js/main2.js' %}"></script>
+    <script src="{% static 'js/foto_perfil_registro.js' %}"></script>
+    <script src="{% static 'js/CalcularEdad.js' %}"></script>
+    <script>
+        const calcularEdadUrl = "{% url 'calcular_edad' %}";
+    </script>
+    
+{% endblock %}

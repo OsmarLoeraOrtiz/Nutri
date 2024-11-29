@@ -1,0 +1,63 @@
+.notification-icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+#punto-rojo {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+
+/* Estilo para el contenedor de la lista de notificaciones con scroll */
+.notifications-container {
+    max-height: 300px; /* Altura máxima del contenedor antes de que aparezca el scroll */
+    overflow-y: auto; /* Añade scroll vertical cuando el contenido es más grande que el contenedor */
+}
+
+/* Estilo para notificaciones leídas */
+.notificacion-leida {
+    background-color: #f0f0f1b3; /* Cambia el color de fondo según tus preferencias */
+    color: #555; /* Cambia el color del texto según tus preferencias */
+}
+
+.btn-seleccionado {
+    background-color: #c5adce; /* Agrega el color que deseas */
+}
+
+.btn-custom:hover {
+    background-color: #9b54ca; /* Tu color de fondo más oscuro */
+    color: #fff; /* Tu color de texto más claro */
+}
+
+/* Estilo para notificaciones no leídas */
+.notificacion-no-leida {
+    font-weight: bold; /* Puedes resaltarlas en negrita */
+}
+
+/* Estilos de la barra de desplazamiento */
+.notifications-container::-webkit-scrollbar {
+width: 15px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Color de fondo de la barra de desplazamiento */
+.notifications-container::-webkit-scrollbar-track {
+    background-color: #efd3f3; /* Cambia el color según desees */
+}
+
+/* Estilo del thumb o manija del scroll */
+.notifications-container::-webkit-scrollbar-thumb {
+    background-color: #9b54ca; /* Color del thumb */
+    border-radius: 5px; /* Borde redondeado */
+}
+
+/* Cambia el color del thumb al estar hover */
+.notifications-container::-webkit-scrollbar-thumb:hover {
+    background-color: #7d3a9e;
+    }

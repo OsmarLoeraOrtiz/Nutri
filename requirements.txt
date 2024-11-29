@@ -1,0 +1,18 @@
+mysqlclient==2.1.1
+Pillow==9.5.0
+six==1.16.0
+djangorestframework==3.14.0
+django-bootstrap4==23.2
+django-crispy-forms==2.0
+crispy-bootstrap4==2022.1
+
+Django>=3.1.7, <3.3.0
+django_extensions>=3.1.1
+django-model-utils >= 4.1.1
+channels>=3.0.3,<4.0
+
+django_private_chat2==1.0.2
+googlemaps==4.10.0
+reportlab==3.6.1
+django-ckeditor==6.1.0
+#docker compose up -d --build
