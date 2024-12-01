@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Perfil | {{usuario.user}}
+{% endblock %}
+
+{% block btns %}
+
+{% endblock %}
+
+{% block links %}
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'lightbox/css/lightbox.css' %}" rel="stylesheet">
+{% endblock links %}
+
+{% block contenido %}
+<section class="section profile" id="perfil">
+  <div class="row">
+    <div class="col-xl-4" >
+      <div class="card  mt-5 seccion_foto_fija">
+        <div class="card-body pt-4 d-flex flex-column align-items-center" >
+          <img src="data:image/jpeg;base64,{{ usuario.foto }}" alt="Profile" class="fotoPerfil">
+          <br>
+          <h2>{{usuario.nombre}} {{usuario.apellidos}}</h2>
+          {% if usuario.usuario_agregado == 1 %}
+          <h6 class="titulo_perfil" id="perfil">Contacto Agregado</h6>
+          {% endif %}
+          <br>
+          <h6 class="titulo_perfil">Descripción</h6>
+              <p class="small fst-italic">{{usuario.descripcion}}</p>
+          <div class="social-links mt-2">
+            <a href="{{usuario.twitter}}" id="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="{{usuario.facebook}}" id="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="{{usuario.instagram}}" id="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="{{usuario.linkedin}}" id="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+          <br>
+          {% if usuario.usuario_agregado == 1 %}
+          <button id="botonEliminarContacto" class="btn btn-danger" onclick="eliminarContacto('{{ usuario.user }}')">Eliminar Paciente</button>
+          {% endif %}
+          <br>
+          {% if usuario.solicitud_pendiente == 1 %}
+          <!-- Nueva sección para aceptar o rechazar solicitud -->
+          <div class="row mt-3">
+            <div class="col-12">
+                <div class="justify-content-between align-items-center">
+                    <button id="botonAgregarContacto" class="btn btn-primary" onclick="agregarContacto('{{ usuario.user }}')">Aceptar Solicitud</button>
+                    <button id="botonEliminarSolicitud" class="btn btn-danger" onclick="eliminarSolicitud('{{ usuario.user }}')">Rechazar Solicitud</button>
+                </div>
+            </div>
+          </div>  
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-8">
+      <div class="card mt-5">
+        <div class="card-body pt-3">
+          <!-- Bordered Tabs -->
+          <div class="tab-content pt-2">
+
+            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+              
+
+              <div class="container section-title" data-aos="fade-up">
+                <h2>Detalles del Usuario</h2>
+              </div><!-- End Section Title -->
+
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Nombre completo</div>
+                <p class="col-lg-9 col-md-8">{{usuario.nombre}} {{usuario.apellidos}}</p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Edad</div>
+                <p class="col-lg-9 col-md-8">{{usuario.edad}}</p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Ubicación</div>
+                <p class="col-lg-9 col-md-8">{{usuario.ubicacion}}</p>
+              </div>
+            </div>
+          </div><!-- End Bordered Tabs -->  
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+ 
+{% block scripts %}
+  <link href="{% static 'lightbox/js/lightbox.js' %}" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function eliminarContacto(username) {
+        $.ajax({
+            url: `/perfil/${username}/eliminar-contacto/`,
+            method: 'GET',  // O 'POST' según tu lógica
+            success: function(response) {
+              if (response.message) {
+                $('#botonEliminarContacto').text('Paciente Eliminado').prop('disabled', true);
+            }},
+            error: function(error) {
+                console.error('Hubo un error al eliminar el contacto:', error);
+            }
+        });
+    }
+  </script>
+  <script>
+    function agregarContacto(username) {
+        $.ajax({
+            url: `/perfil/${username}/agregar-contacto/`,
+            method: 'GET',  // O 'POST' según tu lógica
+            success: function(response) {
+                $('#botonAgregarContacto').text('solicitud Aceptada').prop('disabled', true);
+                $('#botonEliminarSolicitud').text('Rechazar Solicitud').prop('disabled', true);
+            },
+            error: function(error) {
+                console.error('Hubo un error al agregar el contacto:', error);
+            }
+        });
+    }
+</script>
+<script>
+  function eliminarSolicitud(username) {
+      $.ajax({
+          url: `/perfil/${username}/eliminar-solicitud/`,
+          method: 'GET',  // O 'POST' según tu lógica
+          success: function(response) {
+              $('#botonEliminarSolicitud').text('solicitud Rechazada').prop('disabled', true);
+          },
+          error: function(error) {
+              console.error('Hubo un error al eliminar la solicitud:', error);
+          }
+      });
+  }
+</script>
+{% endblock %}
