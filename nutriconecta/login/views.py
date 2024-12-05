@@ -296,3 +296,5 @@ def confirmar_reestablecimiento(request, user_id, token):
         form = ReestablecerContraseñaForm()
     
     return render(request, "registro/nueva_contraseña.html", {'form': form})
+
+

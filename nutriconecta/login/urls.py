@@ -11,7 +11,8 @@ urlpatterns = [
     path('nuevo-nutriologo', NuevoNutriologo.as_view(), name = "nuevo-nutriologo"),
     path('nuevo-consultorio', NuevoConsultorio.as_view(), name = "nuevo-consultorio"),
     path('nuevo-paciente', NuevoPaciente.as_view(), name = "nuevo-paciente"),
-    
+   
+
     # # URL para agregar usuario a grupo "Pacientes"
     # path('agregar-paciente', agregar_paciente, name='agregar-paciente'),
     # # URL para agregar usuario a grupo "Nutriólogos"
