@@ -390,8 +390,8 @@ h6 {
 }
 
 .header {
-  --color-background: #ffffff;
-  --color-inverse: #ffffff;
+  --color-background: #BDBDBD;
+  --color-inverse: #BDBDBD;
   color: var(--color-default);
   background-color: var(--color-background);
   padding: 15px 0;

@@ -11,11 +11,11 @@
  */
 
  :root {
-    --color-default: #7c6f67;
+    --color-default: #C5E1A5;
     --color-default-rgb: 124, 111, 103;
     --color-background: #f9fbfa;
     --color-background-rgb: 249, 251, 250;
-    --color-primary: #7d3a9e;
+    --color-primary: #4caf50;
     --color-primary-rgb: 108, 174, 220;
     --color-secondary: #000000;
     --color-secondary-rgb: 0, 0, 0;
@@ -9018,9 +9018,26 @@ a:focus {
     animation-timing-function: opacity cubic-bezier(0, 1, .4, 1)
 }
 .bg-gradient-primary {
-    background-image: radial-gradient(circle at 50% -20.71%, #ff7f85 0, #ff748c 8.33%, #ff6994 16.67%, #ff5d9c 25%, #ff52a4 33.33%, #ff47ad 41.67%, #f23cb5 50%, #e234be 58.33%, #cf32c8 66.67%, #b935d2 75%, #9f3bdb 83.33%, #7e42e5 91.67%, #514aed 100%);
-    background-size: cover
+    background-image: radial-gradient(
+        circle at 50% -20.71%,
+        #d5f3e1 0%,       /* Verde muy claro */
+        #b7e1c1 8.33%,    /* Verde suave */
+        #a1d0a1 16.67%,   /* Verde claro */
+        #8ac98c 25%,      /* Verde pasto */
+        #78c277 33.33%,   /* Verde fresco */
+        #66b968 41.67%,   /* Verde hierba */
+        #54b25b 50%,      /* Verde menta */
+        #43a84f 58.33%,   /* Verde intenso claro */
+        #399c47 66.67%,   /* Verde oscuro claro */
+        #2f8c3e 75%,      /* Verde fuerte */
+        #267b36 83.33%,   /* Verde bosque */
+        #1d6b2e 91.67%,   /* Verde pino */
+        #145e27 100%      /* Verde profundo */
+    );
+    background-size: cover;
 }
+
+
 .bg-gradient-secondary {
     background-color: #858796;
     background-image: linear-gradient(180deg, #858796 10%, #60616f 100%);

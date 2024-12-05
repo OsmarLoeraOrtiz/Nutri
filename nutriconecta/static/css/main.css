@@ -21,8 +21,8 @@
 :root {
   --color-default: #050200;
   --color-default-rgb: black;
-  --color-background: #c5adce;
-  --color-background-rgb: 249, 251, 250;
+  --color-background: #C5E1A5;
+  --color-primary-rgb: 76, 175, 80;
   --color-primary: #4caf50; /* Verde principal */
   --color-primary-rgb: 76, 175, 80;
   --color-secondary: #000000;
@@ -476,8 +476,8 @@ section {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --color-background: #efd3f3;
-  --color-inverse: #ffffff;
+  --color-background: #FFE4C4;
+  --color-inverse: #FFE4C4;
   color: var(--color-default);
   background-color: var(--color-background);
   padding: 15px 0;
@@ -489,8 +489,8 @@ section {
 
 .header .logo img {
   width:280px;
-  height: 75px;
-  margin-right: 6px;
+  height: 63px;
+  margin-right: 5px;
 }
 
 
@@ -845,7 +845,7 @@ section {
   }
 
   .mobile-nav-active .mobile-nav-toggle {
-    color: #fff;
+    color: #BDBDBD;
     position: absolute;
     font-size: 32px;
     top: 15px;
@@ -1009,8 +1009,8 @@ section {
 # Footer
 --------------------------------------------------------------*/
 .footer {
-  --color-background:#efd3f3;
-  --color-background: #efd3f3;
+  --color-background:#FFE4C4;
+  --color-background: #FFE4C4;
   --color-box-background: ;
   color: var(--color-default);
   background-color: var(--color-background);
