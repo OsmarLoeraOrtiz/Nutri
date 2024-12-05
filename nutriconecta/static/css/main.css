@@ -23,8 +23,8 @@
   --color-default-rgb: black;
   --color-background: #c5adce;
   --color-background-rgb: 249, 251, 250;
-  --color-primary: #9b54ca;
-  --color-primary-rgb: 108, 174, 220;
+  --color-primary: #4caf50; /* Verde principal */
+  --color-primary-rgb: 76, 175, 80;
   --color-secondary: #000000;
   --color-secondary-rgb: 0, 0, 0;
   --color-box-background: none;
@@ -36,13 +36,12 @@
 /* Nav Menu Colors */
 :root {
   --color-nav: #110110;
-  --color-nav-hover: #9b54ca;
+  --color-nav-hover: #388e3c; /* Verde oscuro */
   --color-nav-dropdown: #0a000a;
-  --color-nav-dropdown-hover: #7d3a9e;
+  --color-nav-dropdown-hover: #2e7d32; /* Verde aún más oscuro */
   --color-nav-dropdown-background: #d0e0d8;
   --color-nav-mobile-background: #d0e0d8;
 }
-
 
 /* Smooth scroll */
 :root {
@@ -54,7 +53,7 @@
 .notification-icon {
   width: 40px;
   height: 40px;
-  background-color:#9b54ca; /* Gris con transparencia */
+  background-color: #4caf50; /* Verde principal */
   border-radius: 50%; /* Hace que el área sea circular */
   display: flex;
   justify-content: center;
@@ -115,18 +114,18 @@
 
   /* Color de fondo de la barra de desplazamiento */
   #zona-especialista::-webkit-scrollbar-track {
-    background-color: #efd3f3; /* Cambia el color según desees */
+    background-color: #d0e0d8; /* Cambiado a un verde claro */
   }
 
   /* Estilo del thumb o manija del scroll */
   #zona-especialista::-webkit-scrollbar-thumb {
-    background-color: #9b54ca; /* Color del thumb */
+    background-color: #4caf50; /* Verde principal */
     border-radius: 5px; /* Borde redondeado */
   }
 
   /* Cambia el color del thumb al estar hover */
   #zona-especialista::-webkit-scrollbar-thumb:hover {
-    background-color: #7d3a9e;
+    background-color: #388e3c; /* Verde oscuro */
   }
 
 .expandir {
@@ -226,6 +225,7 @@
 .autocomplete-item:hover {
   background-color: #ddd; /* Cambia el color de fondo al pasar el cursor */
 }
+
 /*--------------------------------------------------------------
 # Perfil
 --------------------------------------------------------------*/
