@@ -90,6 +90,8 @@ def enviar_correo_confirmacion(request):
     enviar_correo(asunto,usuario.email,mensaje)
     return redirect('perfil')
 
+
+
 def confirmar_correo(request, pk, token):
     usuario = get_object_or_404(User, pk=pk)
     
@@ -270,10 +272,8 @@ def enviar_solicitud(request, username):
     mensaje = f"{paciente_user} te ha enviado una solicitud."
     url = reverse('ver_perfil', kwargs={'username': paciente})
     crear_notificacion(user,asunto,mensaje,url)
-
     try:
         nutriologo = Nutriologo.objects.get(user=user)
-     
         if not nutriologo.solicitudes:
             nutriologo.solicitudes = []
         if paciente.id not in nutriologo.solicitudes:
@@ -617,3 +617,42 @@ def datos_default(request):
         'usuario':usuario,
     }
     return JsonResponse(data, safe=False)
+
+
+def contacto_datos(request):
+    if request.method == "POST":
+        # Recoger los datos del formulario
+        first_name = request.POST.get('firstName')
+        last_name = request.POST.get('lastName')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+
+        # Guardar en la base de datos
+        contacto = Contacto(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone=phone,
+            message=message
+        )
+        contacto.save()
+
+        # Enviar correo de confirmación al usuario
+        enviar_correo(
+            "Hemos recibido tu mensaje",
+            email,
+            "Gracias por ponerte en contacto con nosotros. Pronto nos pondremos en contacto contigo."
+        )
+
+        # Enviar correo al administrador
+        enviar_correo(
+            "Nuevo mensaje de contacto",
+            settings.ADMIN_EMAIL,
+            f"Has recibido un nuevo mensaje de {first_name} {last_name}.\n\nMensaje:\n{message}\n\nEmail: {email}\nTeléfono: {phone}"
+        )
+
+        # Mostrar un mensaje de éxito en la interfaz
+        messages.success(request, "Gracias por ponerte en contacto con nosotros. Te responderemos pronto.")
+    
+    return render(request, 'home.html')

@@ -1,6 +1,5 @@
 from datetime import datetime
 import os
-from django.templatetags.static import static
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -10,20 +9,23 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import  AuthenticationForm
 from .forms import *
 from django.core.files.base import ContentFile
-
+from django.contrib.auth.tokens import default_token_generator
+from django.urls import reverse
+from django.conf import settings
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 from django.views.generic import TemplateView
-
-from django.contrib.auth.models import User, Group, Permission
+from django.contrib.auth.models import User, Group
 from nutriologo.models import Nutriologo
-from paciente.models import Paciente
 from nutriologo.forms import FormNutriologo, FormConsultorio
 from paciente.forms import FormPaciente
 from django.db.models.signals import post_save
-
-
+from home.views import enviar_correo
+from django.http import HttpResponseBadRequest
 # @login_required
 # def agregar_paciente(request):
 #     if not request.user.groups.filter(name='Pacientes').exists():
@@ -111,7 +113,6 @@ class NuevoConsultorio(View):
         form = FormConsultorio(request.POST)
         print(request.POST)
         print(self.request.user)
- 
         if form.is_valid():
 
             nuevo_grupo, creado = Group.objects.get_or_create(name='Consultorios')
@@ -251,26 +252,47 @@ def cerrarSesion(request):
     logout(request)
     return redirect('home')
     
-def reestablecer_contraseña(request):
-    if request.method=="POST":
-            form = ReestablecerContraseñaForm(request.POST)
-            if form.is_valid():
-                correo = form.cleaned_data.get("email")
-                usuario = authenticate(email=correo)
-                if usuario is not None:
-                    nuevaContraseña = form.cleaned_data.get("password1")
-                    usuario.set_password(nuevaContraseña)
-                    usuario.save()                                        #No reestablece la contraseña
-                    return redirect('iniciar_sesion')
-                else:
-                    return redirect('iniciar_sesion')
-                    #messages.error(request, "Correo no existente")
-    else:  
-            form = ReestablecerContraseñaForm()
-    return render(request, "registro/reestablecer.html",{'form':form})
 
+def enviar_correo_reestablecer(request):
+    if request.method == "POST":
+        # Obtener el correo directamente del formulario HTML
+        correo = request.POST.get("email")
+        if correo:
+            try:
+                # Verificar si el correo existe en la base de datos
+                usuario = User.objects.get(email=correo)
+                token = default_token_generator.make_token(usuario)
+                url_confirmacion = reverse('reestablecer_contraseña_confirmar', args=[usuario.pk, token])
+                enlace_confirmacion = f'http://{settings.SITE_DOMAIN}{url_confirmacion}'
+                mensaje = f'Haz clic en el siguiente enlace para reestablecer tu contraseña: {enlace_confirmacion}'
+                # (Opcional) Enviar correo de reestablecimiento
+                # Aquí podrías generar un token y enviar el correo
+                enviar_correo(
+                    "Reestablecimiento de contraseña",
+                    usuario.email,
+                    mensaje
+                )
+                return redirect('login')  # Opcionalmente manejar error
+ # Opcionalmente redirigir
+            except User.DoesNotExist:
+                return redirect('login')  # Opcionalmente manejar error
 
+    return render(request, "registro/reestablecer.html")
+def confirmar_reestablecimiento(request, user_id, token):
+    usuario = get_object_or_404(User, pk=user_id)
+    if not default_token_generator.check_token(usuario, token):
+        return HttpResponseBadRequest("El enlace para reestablecer la contraseña es inválido o ha expirado.")
     
+    if request.method == "POST":
+        form = ReestablecerContraseñaForm(request.POST)
+        if form.is_valid():
+            nueva_contraseña = form.cleaned_data.get("password1")
+            usuario.set_password(nueva_contraseña)
+            usuario.save()
+            return redirect('login')
+        else:
+            messages.error(request, "Error al reestablecer la contraseña.")
+    else:
+        form = ReestablecerContraseñaForm()
     
-    
-    
+    return render(request, "registro/nueva_contraseña.html", {'form': form})

@@ -29,5 +29,7 @@ urlpatterns = [
     path('confirmar_correo/<int:pk>/<str:token>/', confirmar_correo, name='confirmar_correo'),
     path('ajuste_notificaciones/', ajuste_notificaciones, name='ajuste_notificaciones'),
     path('marcar_notificacion_leida/', marcar_notificacion_leida, name='marcar_notificacion_leida'),
+    path('contacto_datos/', contacto_datos, name='contacto_datos'),
+
 
 ]# urls.py

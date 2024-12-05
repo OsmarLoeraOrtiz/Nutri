@@ -4,7 +4,8 @@ from .views import *
 urlpatterns = [
     path('', loguear, name = 'login'),
     path('logout', cerrarSesion, name = "logout"),
-    path('reestablecer-contraseña', reestablecer_contraseña, name = "reestablecer_contra"),
+    path('reestablecer/', enviar_correo_reestablecer, name='reestablecer_contraseña'),
+    path('reestablecer/<int:user_id>/<str:token>/', confirmar_reestablecimiento, name='reestablecer_contraseña_confirmar'),
     path('registro', VRegistro.as_view(), name = "registro"),
     path('registro-usuario', RegistroUsuarioView.as_view(), name = "registro-usuario"),
     path('nuevo-nutriologo', NuevoNutriologo.as_view(), name = "nuevo-nutriologo"),

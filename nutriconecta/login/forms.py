@@ -14,16 +14,15 @@ class RegistroForm(UserCreationForm):
 
 
 class ReestablecerContraseñaForm(forms.Form):
-    email = forms.EmailField(required=True)
     password1 = forms.CharField(
         label=("Contraseña"),
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
         strip=False,
     )
     password2 = forms.CharField(
         label=("Confirmar contraseña"),
         strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
         help_text=("Para verificar, introduzca la misma contraseña que introdujo antes."),
     )
 

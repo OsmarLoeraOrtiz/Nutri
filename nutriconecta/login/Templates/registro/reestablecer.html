@@ -24,12 +24,12 @@
   {% csrf_token %}
   <div class="form-group">
       <input type="email" class="form-control form-control-user"
-          id="exampleInputEmail" aria-describedby="emailHelp"
+          id="email" name="email" aria-describedby="emailHelp"
           placeholder="Enter Email Address...">
   </div>
-  <a href="{% url 'login' %}" class="btn btn-primary btn-user btn-block">
-      Reestablecer Contraseña
-  </a>
+  <button type="submit" class="btn btn-primary btn-user btn-block">
+      Mandar Correo
+  </button>
 </form>
 <hr>
 <div class="text-center">
